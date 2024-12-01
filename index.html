@@ -4,9 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Portfolio Website</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
+        .timeline-items {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-left: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: -60px;
+            top: 10px;
+            width: 50px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .timeline-content {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            flex-grow: 1;
+        }
         * {
     margin: 0;
     padding: 0;
@@ -644,44 +682,8 @@ flex-direction: column;
             grid-template-columns: repeat(1,1fr);
         }
     }
-        .timeline-items {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
 
-        .timeline-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            padding-left: 40px;
-        }
 
-        .timeline-dot {
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 20px;
-            height: 20px;
-            background: #333;
-            border-radius: 50%;
-        }
-
-        .timeline-date {
-            position: absolute;
-            left: -60px;
-            top: 10px;
-            width: 50px;
-            text-align: right;
-            font-weight: bold;
-        }
-
-        .timeline-content {
-            background: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
-            flex-grow: 1;
-        }
     </style>
 </head>
 <body>
@@ -906,6 +908,31 @@ flex-direction: column;
             2024 Abul kalam | All Rights Reserved 
         </p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        let menuIcon = document.querySelector('#menu-icon');
+let navbar = document.querySelector('.navbar');
+let sections = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('header nava');
+window.onscroll = () => {
+sections.forEach(sec => {
+let top = window.scrollY;
+let offset = sec.offsetTop - 150;
+let height = sec.offsetHeight;
+let id = sec.getAttribute('id');
+
+if(top >= offset && top < offset + height){
+navLinks.forEach (links => {
+links.classList.remove('active');
+document.querySelector('header nav a[href*=' + id +' ]').classList.add
+('active')
+})
+}
+})
+}
+menuIcon.onclick = () => {
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('active')
+}
+    </script>
 </body>
 </html>
